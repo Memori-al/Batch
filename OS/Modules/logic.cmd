@@ -1,3 +1,4 @@
+REM OS í”„ë¡œê·¸ë¨ì˜ í•µì‹¬ ëª¨ë“ˆ
 echo %title% Starting Logical Operations
 
 :SetString
@@ -21,8 +22,8 @@ pause>nul
 exit
 
 REM start_time[i], end_time[i]
-REM wait_time[i] = ´ë±â½Ã°£
-REM end_time[i] = Á¾·á½Ã°£
+REM wait_time[i] = ëŒ€ê¸°ì‹œê°„
+REM end_time[i] = ì¢…ë£Œì‹œê°„
 
 
 :FCFS_Logic
@@ -119,4 +120,4 @@ if !awt! leq 0 (
 goto BACK
 
 :BACK
-REM OS.cmd ·Î µ¹¾Æ°¡±â
+REM OS.cmd ë¡œ ëŒì•„ê°€ê¸°
