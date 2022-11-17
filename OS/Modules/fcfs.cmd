@@ -1,13 +1,13 @@
 REM FCFS 알고리즘
-REM 프로세스들의 수행 시간을 결정하는 TimeSlice 변수를 입력 받는 Settings 레이블
+REM 프로세스들의 수행 시간을 결정하는 Execution 변수를 입력 받는 Settings 레이블
 set prth=%cd%\Modules\Process
 
 :Settings
 mode con cols=73 lines=18
 echo %title% 각 프로세스의 작업 시간을 입력해주세요. [ex^) P1 P2 P3 P4]
 echo %title% ex^) 3 4 7 1
-set /p TimeSlice=^>^> 
-for /f "tokens=1-4 delims= " %%a in ("%TimeSlice%") do (
+set /p Execution=^>^> 
+for /f "tokens=1-4 delims= " %%a in ("%Execution%") do (
 	set TS_P1=%%a
 	set TS_P2=%%b
 	set TS_P3=%%c
@@ -15,7 +15,7 @@ for /f "tokens=1-4 delims= " %%a in ("%TimeSlice%") do (
 )
 for /l %%a in (1,1,4) do (
 	if /i "TS_P%%a" equ "" (
-		echo %title% P%%a TimeSlice 가 공백입니다.
+		echo %title% P%%a Execution 가 공백입니다.
 		goto Settings
 	)
 )
