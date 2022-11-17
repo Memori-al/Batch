@@ -63,6 +63,7 @@ for /f "skip=3 tokens=1-3 delims= " %%a in (%cd%\sortdata.txt) do (
 	call %prth%\%%a.cmd
 )
 set end_time[0]=%time:~6,2%
+call "%cd%\Modules\rtime.lnk"
 goto BACK
 
 :BACK

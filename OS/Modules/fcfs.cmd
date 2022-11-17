@@ -52,6 +52,7 @@ call %prth%\P2.cmd
 call %prth%\P3.cmd
 call %prth%\P4.cmd
 set end_time[0]=%time:~6,2%
+call "%cd%\Modules\rtime.lnk"
 goto BACK
 
 REM Execute 작업 수행 후 os.cmd 로 돌아가는 레이블
