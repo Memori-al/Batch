@@ -1,5 +1,5 @@
 REM SJF 알고리즘
-REM 프로세스들의 수행 시간을 결정하는 Execution 변수를 입력 받는 Settings 레이블
+
 set prth=%cd%\Modules\Process
 if exist "%cd%\sortdata.txt" (
 	del /q "%cd%\sortdata.txt" 
