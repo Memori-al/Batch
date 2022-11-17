@@ -1,4 +1,4 @@
-REM SJF 알고리즘
+REM FCFS 알고리즘
 
 set prth=%cd%\Modules\Process
 
