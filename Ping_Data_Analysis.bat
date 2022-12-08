@@ -1,5 +1,16 @@
 @echo off
-rem ==========================
+rem ================================================================================== ^
+^ [í•‘ ë¶„ì„ ë„êµ¬]
+^ í•‘ ë¶„ì„ ë„êµ¬ëŠ” ë°ì´í„° íŒ¨í‚·ì¸ Ping ì„ ì§€ì •í•œ í˜¸ìŠ¤íŠ¸ì— ì „ì†¡í•˜ì—¬ ë°˜í™˜ë˜ëŠ” ë°ì´í„°ë¥¼ ë¶„ì„í•´
+^ ì‚¬ìš©ìžì˜ ë„¤íŠ¸ì›Œí¬ í™˜ê²½ì— ëŒ€í•œ ë³´ê³ ì„œë¥¼ ë§Œë“œëŠ” í”„ë¡œê·¸ëž¨ìž…ë‹ˆë‹¤.
+^ í‰ê· /ìµœëŒ€ íŽ¸ì°¨ ëŒ€ì¡° ê²°ê³¼ íŒ¨í‚· ì†ì‹¤ë¥  1%, ì™•ë³µ ì‹œê°„ 100ms
+^ ì´ìƒì¸ ê²½ìš° ë„¤íŠ¸ì›Œí¬ í™˜ê²½ì— ëŒ€í•œ ë¬¸ì œê°€ ìžˆìŒì„ ì‚¬ìš©ìžì—ê²Œ ë³´ê³ í•©ë‹ˆë‹¤.
+^ 
+^ [íƒ€ê²Ÿ] Yahoo, Google, ë¥´ë„¤PvE/PvP, Localhost
+^ [ë³´ê³ ì„œ] íŒ¨í‚· ë° ì™•ë³µ ì‹œê°„(ms) ë°ì´í„°ë¥¼ ê¸°ë°˜ìœ¼ë¡œí•œ ìµœëŒ€/í‰ê·  íŽ¸ì°¨ ëŒ€ì¡° ê²°ê³¼ê°€ ë³´ê³ ì„œë¡œ ìž‘ì„±ë¨.
+^ [ë¹Œë“œë²„ì „] 2.0.0
+^ [ì €ìž¥ê²½ë¡œ] c:\ip_data í´ë”ì— ë³´ê³ ì„œê°€ ì €ìž¥ë©ë‹ˆë‹¤. (ì‚¬ìš©ìžëª…_Ping_Analysis.txt)
+rem ==================================================================================
 title :: Ping Data Analysis :: Rene v2
 mode con cols=76 lines=18
 set Max=67
@@ -30,14 +41,14 @@ set /a AddLoad=%Load%+1
 rem ==========================
 echo %title% Packet Send to yahoo.com
 ping -t yahoo.com -n 10 > c:\IP_Data\resource\%Username%_yahoo_Data.txt
-findstr /c:"ÆÐÅ¶" "c:\IP_Data\resource\%Username%_yahoo_Data.txt" > "c:\IP_Data\resource\yahoo_split.txt"
-findstr /c:"ÃÖ¼Ò" "c:\IP_Data\resource\%Username%_yahoo_Data.txt" >> "c:\IP_Data\resource\yahoo_split.txt"
-for /f "eol=ÃÖ tokens=1-30 delims= " %%a in (c:\IP_Data\resource\yahoo_split.txt) do (
+findstr /c:"íŒ¨í‚·" "c:\IP_Data\resource\%Username%_yahoo_Data.txt" > "c:\IP_Data\resource\yahoo_split.txt"
+findstr /c:"ìµœì†Œ" "c:\IP_Data\resource\%Username%_yahoo_Data.txt" >> "c:\IP_Data\resource\yahoo_split.txt"
+for /f "eol=ìµœ tokens=1-30 delims= " %%a in (c:\IP_Data\resource\yahoo_split.txt) do (
 	set yasend=%%d
 	set yarev=%%g
 	set yless=%%j
 	set yaper=%%k
-	for /f "eol=ÆÐ tokens=1-30 delims= " %%a in (c:\IP_Data\resource\yahoo_split.txt) do (
+	for /f "eol=íŒ¨ tokens=1-30 delims= " %%a in (c:\IP_Data\resource\yahoo_split.txt) do (
 		set yamin=%%c
 		set yamax=%%f
 		set yaavg=%%i
@@ -64,37 +75,37 @@ if /i "%tAvg:~0,1%" equ "-" (
 set YahooAvg=%ComMax%
 if "%ComAvg%" geq "100" (
 	set /a Error=%Error%+1 >nul
-	echo [Console] Yahoo µµ¸ÞÀÎ¿¡ ÆÐÅ¶ Àü¼Û Áß ¹®Á¦°¡ ¹ß»ýÇß½À´Ï´Ù.
+	echo [Console] Yahoo ë„ë©”ì¸ì— íŒ¨í‚· ì „ì†¡ ì¤‘ ë¬¸ì œê°€ ë°œìƒí–ˆìŠµë‹ˆë‹¤.
 	echo   ================================== > c:\IP_Data\%username%_Ping_Analysis.txt
 	echo            [ Ping Data Analysis Report v%addLoad% ] >> c:\IP_Data\%username%_Ping_Analysis.txt
 	echo 			[%date:~0,4%-%date:~5,2%-%date:~8,3% %time:~0,2%:%time:~3,2%:%time:~6,2%] >> c:\IP_Data\%username%_Ping_Analysis.txt
 	echo 			[ %username% ] >> c:\IP_Data\%username%_Ping_Analysis.txt
 	echo   ================================== >> c:\IP_Data\%username%_Ping_Analysis.txt
 	echo    [ Internet Report ] >> c:\IP_Data\%username%_Ping_Analysis.txt
-	echo    ^- Yahoo ^= ÃÖ´ë %ComMax% ms^, Æò±Õ %ComAvg% ms^, ¼Õ½Ç %yless%^, ¼Õ½Ç·ü %yper% >> c:\IP_Data\%username%_Ping_Analysis.txt
+	echo    ^- Yahoo ^= ìµœëŒ€ %ComMax% ms^, í‰ê·  %ComAvg% ms^, ì†ì‹¤ %yless%^, ì†ì‹¤ë¥  %yper% >> c:\IP_Data\%username%_Ping_Analysis.txt
 ) else (
-	echo [Console] Yahoo µµ¸ÞÀÎ¿¡ ÆÐÅ¶ Àü¼Û Áß ¹®Á¦°¡ ¹ß°ßµÇÁö ¾Ê¾Ò½À´Ï´Ù.
+	echo [Console] Yahoo ë„ë©”ì¸ì— íŒ¨í‚· ì „ì†¡ ì¤‘ ë¬¸ì œê°€ ë°œê²¬ë˜ì§€ ì•Šì•˜ìŠµë‹ˆë‹¤.
 	echo   ================================== > c:\IP_Data\%username%_Ping_Analysis.txt
 	echo            [ Ping Data Analysis Report v%addLoad% ] >> c:\IP_Data\%username%_Ping_Analysis.txt
 	echo 			[%date:~0,4%-%date:~5,2%-%date:~8,3% %time:~0,2%:%time:~3,2%:%time:~6,2%] >> c:\IP_Data\%username%_Ping_Analysis.txt
 	echo 			[ %username% ] >> c:\IP_Data\%username%_Ping_Analysis.txt
 	echo   ================================== >> c:\IP_Data\%username%_Ping_Analysis.txt
 	echo    [ Internet Report ] >> c:\IP_Data\%username%_Ping_Analysis.txt
-	echo    ^- Yahoo ^= ÃÖ´ë %ComMax% ms, Æò±Õ %ComAvg% ms, ¼Õ½Ç %yless%, ¼Õ½Ç·ü %yper% >> c:\IP_Data\%username%_Ping_Analysis.txt
+	echo    ^- Yahoo ^= ìµœëŒ€ %ComMax% ms, í‰ê·  %ComAvg% ms, ì†ì‹¤ %yless%, ì†ì‹¤ë¥  %yper% >> c:\IP_Data\%username%_Ping_Analysis.txt
 )
 goto google
 
 :Google
 echo %title% Packet Send to google.co.kr
 ping -t google.co.kr -n 10 > c:\IP_Data\resource\%Username%_google_Data.txt
-findstr /c:"ÆÐÅ¶" "c:\IP_Data\resource\%Username%_google_Data.txt" > "c:\IP_Data\resource\google_split.txt"
-findstr /c:"ÃÖ¼Ò" "c:\IP_Data\resource\%Username%_google_Data.txt" >> "c:\IP_Data\resource\google_split.txt"
-for /f "eol=ÃÖ tokens=1-30 delims= " %%a in (c:\IP_Data\resource\google_split.txt) do (
+findstr /c:"íŒ¨í‚·" "c:\IP_Data\resource\%Username%_google_Data.txt" > "c:\IP_Data\resource\google_split.txt"
+findstr /c:"ìµœì†Œ" "c:\IP_Data\resource\%Username%_google_Data.txt" >> "c:\IP_Data\resource\google_split.txt"
+for /f "eol=ìµœ tokens=1-30 delims= " %%a in (c:\IP_Data\resource\google_split.txt) do (
 	set yasend=%%d
 	set yarev=%%g
 	set yless=%%j
 	set yaper=%%k
-	for /f "eol=ÆÐ tokens=1-30 delims= " %%a in (c:\IP_Data\resource\google_split.txt) do (
+	for /f "eol=íŒ¨ tokens=1-30 delims= " %%a in (c:\IP_Data\resource\google_split.txt) do (
 		set yamin=%%c
 		set yamax=%%f
 		set yaavg=%%i
@@ -121,16 +132,16 @@ if /i "%tAvg:~0,1%" equ "-" (
 set GoogleAvg=%ComMax%
 if "%ComMax%" geq "100" (
 	set /a Error=%Error%+1 >nul
-	echo [Console] Google µµ¸ÞÀÎ¿¡ ÆÐÅ¶ Àü¼Û Áß ¹®Á¦°¡ ¹ß»ýÇß½À´Ï´Ù.
-	echo    ^- Google ^= ÃÖ´ë %ComMax% ms, Æò±Õ %ComAvg% ms, ¼Õ½Ç %yless%, ¼Õ½Ç·ü %yper% >> c:\IP_Data\%username%_Ping_Analysis.txt
+	echo [Console] Google ë„ë©”ì¸ì— íŒ¨í‚· ì „ì†¡ ì¤‘ ë¬¸ì œê°€ ë°œìƒí–ˆìŠµë‹ˆë‹¤.
+	echo    ^- Google ^= ìµœëŒ€ %ComMax% ms, í‰ê·  %ComAvg% ms, ì†ì‹¤ %yless%, ì†ì‹¤ë¥  %yper% >> c:\IP_Data\%username%_Ping_Analysis.txt
 ) else (
-	echo [Console] Google µµ¸ÞÀÎ¿¡ ÆÐÅ¶ Àü¼Û Áß ¹®Á¦°¡ ¹ß°ßµÇÁö ¾Ê¾Ò½À´Ï´Ù.
-	echo    ^- Google ^= ÃÖ´ë %ComMax% ms, Æò±Õ %ComAvg% ms, ¼Õ½Ç %yless%, ¼Õ½Ç·ü %yper% >> c:\IP_Data\%username%_Ping_Analysis.txt
+	echo [Console] Google ë„ë©”ì¸ì— íŒ¨í‚· ì „ì†¡ ì¤‘ ë¬¸ì œê°€ ë°œê²¬ë˜ì§€ ì•Šì•˜ìŠµë‹ˆë‹¤.
+	echo    ^- Google ^= ìµœëŒ€ %ComMax% ms, í‰ê·  %ComAvg% ms, ì†ì‹¤ %yless%, ì†ì‹¤ë¥  %yper% >> c:\IP_Data\%username%_Ping_Analysis.txt
 )
 if "%Error%" geq "1" (
-	echo    ^= ³×Æ®¿öÅ© È¯°æÀÌ ºÒ¾ÈÁ¤ÇÕ´Ï´Ù. >> c:\IP_Data\%username%_Ping_Analysis.txt
+	echo    ^= ë„¤íŠ¸ì›Œí¬ í™˜ê²½ì´ ë¶ˆì•ˆì •í•©ë‹ˆë‹¤. >> c:\IP_Data\%username%_Ping_Analysis.txt
 ) else (
-	echo    ^= ³×Æ®¿öÅ© È¯°æÀÌ Á¤»óÀûÀÔ´Ï´Ù. >> c:\IP_Data\%username%_Ping_Analysis.txt
+	echo    ^= ë„¤íŠ¸ì›Œí¬ í™˜ê²½ì´ ì •ìƒì ìž…ë‹ˆë‹¤. >> c:\IP_Data\%username%_Ping_Analysis.txt
 )
 echo. >> c:\IP_Data\%username%_Ping_Analysis.txt
 goto PvE
@@ -138,14 +149,14 @@ goto PvE
 :PvE
 echo %title% Packet Send to Rene PvE Server
 ping -t 35.216.123.122 -n 20 > c:\IP_Data\resource\%Username%_pve_Data.txt
-findstr /c:"ÆÐÅ¶" "c:\IP_Data\resource\%Username%_PvE_Data.txt" > "c:\IP_Data\resource\PvE_split.txt"
-findstr /c:"ÃÖ¼Ò" "c:\IP_Data\resource\%Username%_PvE_Data.txt" >> "c:\IP_Data\resource\PvE_split.txt"
-for /f "eol=ÃÖ tokens=1-30 delims= " %%a in (c:\IP_Data\resource\PvE_split.txt) do (
+findstr /c:"íŒ¨í‚·" "c:\IP_Data\resource\%Username%_PvE_Data.txt" > "c:\IP_Data\resource\PvE_split.txt"
+findstr /c:"ìµœì†Œ" "c:\IP_Data\resource\%Username%_PvE_Data.txt" >> "c:\IP_Data\resource\PvE_split.txt"
+for /f "eol=ìµœ tokens=1-30 delims= " %%a in (c:\IP_Data\resource\PvE_split.txt) do (
 	set yasend=%%d
 	set yarev=%%g
 	set yless=%%j
 	set yaper=%%k
-	for /f "eol=ÆÐ tokens=1-30 delims= " %%a in (c:\IP_Data\resource\PvE_split.txt) do (
+	for /f "eol=íŒ¨ tokens=1-30 delims= " %%a in (c:\IP_Data\resource\PvE_split.txt) do (
 		set yamin=%%c
 		set yamax=%%f
 		set yaavg=%%i
@@ -172,27 +183,27 @@ if /i "%tAvg:~0,1%" equ "-" (
 set PvEAvg=%ComMax%
 if "%ComMax%" geq "100" (
 	set /a sError=%sError%+1 >nul
-	echo [Console] PvE µµ¸ÞÀÎ¿¡ ÆÐÅ¶ Àü¼Û Áß ¹®Á¦°¡ ¹ß»ýÇß½À´Ï´Ù.
+	echo [Console] PvE ë„ë©”ì¸ì— íŒ¨í‚· ì „ì†¡ ì¤‘ ë¬¸ì œê°€ ë°œìƒí–ˆìŠµë‹ˆë‹¤.
 	echo    [ Rene Report ] >> c:\IP_Data\%username%_Ping_Analysis.txt
-	echo    ^- PvE ^= ÃÖ´ë %ComMax% ms, Æò±Õ %ComAvg% ms, ¼Õ½Ç %yless%, ¼Õ½Ç·ü %yper% >> c:\IP_Data\%username%_Ping_Analysis.txt
+	echo    ^- PvE ^= ìµœëŒ€ %ComMax% ms, í‰ê·  %ComAvg% ms, ì†ì‹¤ %yless%, ì†ì‹¤ë¥  %yper% >> c:\IP_Data\%username%_Ping_Analysis.txt
 ) else (
-	echo [Console] PvE µµ¸ÞÀÎ¿¡ ÆÐÅ¶ Àü¼Û Áß ¹®Á¦°¡ ¹ß°ßµÇÁö ¾Ê¾Ò½À´Ï´Ù.
+	echo [Console] PvE ë„ë©”ì¸ì— íŒ¨í‚· ì „ì†¡ ì¤‘ ë¬¸ì œê°€ ë°œê²¬ë˜ì§€ ì•Šì•˜ìŠµë‹ˆë‹¤.
 	echo    [ Rene Report ] >> c:\IP_Data\%username%_Ping_Analysis.txt
-	echo    ^- PvE ^= ÃÖ´ë %ComMax% ms, Æò±Õ %ComAvg% ms, ¼Õ½Ç %yless%, ¼Õ½Ç·ü %yper% >> c:\IP_Data\%username%_Ping_Analysis.txt
+	echo    ^- PvE ^= ìµœëŒ€ %ComMax% ms, í‰ê·  %ComAvg% ms, ì†ì‹¤ %yless%, ì†ì‹¤ë¥  %yper% >> c:\IP_Data\%username%_Ping_Analysis.txt
 )
 goto PvP
 
 :PvP
 echo %title% Packet Send to Rene PvP Server
 ping -t 34.64.91.211 -n 20 > c:\IP_Data\resource\%Username%_pvp_Data.txt
-findstr /c:"ÆÐÅ¶" "c:\IP_Data\resource\%Username%_PvP_Data.txt" > "c:\IP_Data\resource\PvP_split.txt"
-findstr /c:"ÃÖ¼Ò" "c:\IP_Data\resource\%Username%_PvP_Data.txt" >> "c:\IP_Data\resource\PvP_split.txt"
-for /f "eol=ÃÖ tokens=1-30 delims= " %%a in (c:\IP_Data\resource\PvP_split.txt) do (
+findstr /c:"íŒ¨í‚·" "c:\IP_Data\resource\%Username%_PvP_Data.txt" > "c:\IP_Data\resource\PvP_split.txt"
+findstr /c:"ìµœì†Œ" "c:\IP_Data\resource\%Username%_PvP_Data.txt" >> "c:\IP_Data\resource\PvP_split.txt"
+for /f "eol=ìµœ tokens=1-30 delims= " %%a in (c:\IP_Data\resource\PvP_split.txt) do (
 	set yasend=%%d
 	set yarev=%%g
 	set yless=%%j
 	set yaper=%%k
-	for /f "eol=ÆÐ tokens=1-30 delims= " %%a in (c:\IP_Data\resource\PvP_split.txt) do (
+	for /f "eol=íŒ¨ tokens=1-30 delims= " %%a in (c:\IP_Data\resource\PvP_split.txt) do (
 		set yamin=%%c
 		set yamax=%%f
 		set yaavg=%%i
@@ -219,16 +230,16 @@ if /i "%tAvg:~0,1%" equ "-" (
 set PvPAvg=%ComMax%
 if "%ComMax%" geq "100" (
 	set /a sError=%sError%+1 >nul
-	echo [Console] PvP µµ¸ÞÀÎ¿¡ ÆÐÅ¶ Àü¼Û Áß ¹®Á¦°¡ ¹ß»ýÇß½À´Ï´Ù.
-	echo    ^- PvP ^= ÃÖ´ë %ComMax% ms, Æò±Õ %ComAvg% ms, ¼Õ½Ç %yless%, ¼Õ½Ç·ü %yper% >> c:\IP_Data\%username%_Ping_Analysis.txt
+	echo [Console] PvP ë„ë©”ì¸ì— íŒ¨í‚· ì „ì†¡ ì¤‘ ë¬¸ì œê°€ ë°œìƒí–ˆìŠµë‹ˆë‹¤.
+	echo    ^- PvP ^= ìµœëŒ€ %ComMax% ms, í‰ê·  %ComAvg% ms, ì†ì‹¤ %yless%, ì†ì‹¤ë¥  %yper% >> c:\IP_Data\%username%_Ping_Analysis.txt
 ) else (
-	echo [Console] PvP µµ¸ÞÀÎ¿¡ ÆÐÅ¶ Àü¼Û Áß ¹®Á¦°¡ ¹ß°ßµÇÁö ¾Ê¾Ò½À´Ï´Ù.
-	echo    ^- PvP ^= ÃÖ´ë %ComMax% ms, Æò±Õ %ComAvg% ms, ¼Õ½Ç %yless%, ¼Õ½Ç·ü %yper% >> c:\IP_Data\%username%_Ping_Analysis.txt
+	echo [Console] PvP ë„ë©”ì¸ì— íŒ¨í‚· ì „ì†¡ ì¤‘ ë¬¸ì œê°€ ë°œê²¬ë˜ì§€ ì•Šì•˜ìŠµë‹ˆë‹¤.
+	echo    ^- PvP ^= ìµœëŒ€ %ComMax% ms, í‰ê·  %ComAvg% ms, ì†ì‹¤ %yless%, ì†ì‹¤ë¥  %yper% >> c:\IP_Data\%username%_Ping_Analysis.txt
 )
 if "%sError%" geq "1" (
-	echo    ^= ³×Æ®¿öÅ© È¯°æÀÌ ºÒ¾ÈÁ¤ÇÕ´Ï´Ù. >> c:\IP_Data\%username%_Ping_Analysis.txt
+	echo    ^= ë„¤íŠ¸ì›Œí¬ í™˜ê²½ì´ ë¶ˆì•ˆì •í•©ë‹ˆë‹¤. >> c:\IP_Data\%username%_Ping_Analysis.txt
 ) else (
-	echo    ^= ³×Æ®¿öÅ© È¯°æÀÌ Á¤»óÀûÀÔ´Ï´Ù. >> c:\IP_Data\%username%_Ping_Analysis.txt
+	echo    ^= ë„¤íŠ¸ì›Œí¬ í™˜ê²½ì´ ì •ìƒì ìž…ë‹ˆë‹¤. >> c:\IP_Data\%username%_Ping_Analysis.txt
 )
 echo. >> c:\IP_Data\%username%_Ping_Analysis.txt
 goto Local
@@ -241,14 +252,14 @@ for /f "tokens=1-30 delims= " %%a in (c:\IP_Data\resource\ip.txt) do (
 	echo %title% Packet Send to Localhost
 	ping -t %%m -n 10 >> c:\IP_Data\resource\%username%_local_data.txt
 )
-findstr /c:"ÆÐÅ¶" "c:\IP_Data\resource\%Username%_Local_Data.txt" > "c:\IP_Data\resource\Local_split.txt"
-findstr /c:"ÃÖ¼Ò" "c:\IP_Data\resource\%Username%_Local_Data.txt" >> "c:\IP_Data\resource\Local_split.txt"
-for /f "eol=ÃÖ tokens=1-30 delims= " %%a in (c:\IP_Data\resource\Local_split.txt) do (
+findstr /c:"íŒ¨í‚·" "c:\IP_Data\resource\%Username%_Local_Data.txt" > "c:\IP_Data\resource\Local_split.txt"
+findstr /c:"ìµœì†Œ" "c:\IP_Data\resource\%Username%_Local_Data.txt" >> "c:\IP_Data\resource\Local_split.txt"
+for /f "eol=ìµœ tokens=1-30 delims= " %%a in (c:\IP_Data\resource\Local_split.txt) do (
 	set yasend=%%d
 	set yarev=%%g
 	set yless=%%j
 	set yaper=%%k
-	for /f "eol=ÆÐ tokens=1-30 delims= " %%a in (c:\IP_Data\resource\Local_split.txt) do (
+	for /f "eol=íŒ¨ tokens=1-30 delims= " %%a in (c:\IP_Data\resource\Local_split.txt) do (
 		set yamin=%%c
 		set yamax=%%f
 		set yaavg=%%i
@@ -280,18 +291,18 @@ if /i "%tAvg:~0,1%" equ "-" (
 set LocalAvg=%ComMax%
 if "%ComMax%" geq "100" (
 	set /a lError=%lError%+1 >nul
-	echo [Console] Local µµ¸ÞÀÎ¿¡ ÆÐÅ¶ Àü¼Û Áß ¹®Á¦°¡ ¹ß»ýÇß½À´Ï´Ù.
+	echo [Console] Local ë„ë©”ì¸ì— íŒ¨í‚· ì „ì†¡ ì¤‘ ë¬¸ì œê°€ ë°œìƒí–ˆìŠµë‹ˆë‹¤.
 	echo    [ Localhost Report ] >> c:\IP_Data\%username%_Ping_Analysis.txt
-	echo    ^- Localhost ^= ÃÖ´ë %ComMax% ms, Æò±Õ %ComAvg% ms, ¼Õ½Ç %yless%, ¼Õ½Ç·ü %yper% >> c:\IP_Data\%username%_Ping_Analysis.txt
+	echo    ^- Localhost ^= ìµœëŒ€ %ComMax% ms, í‰ê·  %ComAvg% ms, ì†ì‹¤ %yless%, ì†ì‹¤ë¥  %yper% >> c:\IP_Data\%username%_Ping_Analysis.txt
 ) else (
-	echo [Console] Local µµ¸ÞÀÎ¿¡ ÆÐÅ¶ Àü¼Û Áß ¹®Á¦°¡ ¹ß°ßµÇÁö ¾Ê¾Ò½À´Ï´Ù.
+	echo [Console] Local ë„ë©”ì¸ì— íŒ¨í‚· ì „ì†¡ ì¤‘ ë¬¸ì œê°€ ë°œê²¬ë˜ì§€ ì•Šì•˜ìŠµë‹ˆë‹¤.
 	echo    [ Localhost Report ] >> c:\IP_Data\%username%_Ping_Analysis.txt
-	echo    ^- Localhost ^= ÃÖ´ë %ComMax% ms, Æò±Õ %ComAvg% ms, ¼Õ½Ç %yless%, ¼Õ½Ç·ü %yper% >> c:\IP_Data\%username%_Ping_Analysis.txt
+	echo    ^- Localhost ^= ìµœëŒ€ %ComMax% ms, í‰ê·  %ComAvg% ms, ì†ì‹¤ %yless%, ì†ì‹¤ë¥  %yper% >> c:\IP_Data\%username%_Ping_Analysis.txt
 )
 if "%lError%" geq "1" ( 
-	echo    ^= ³×Æ®¿öÅ© È¯°æÀÌ ºÒ¾ÈÁ¤ÇÕ´Ï´Ù. >> c:\IP_Data\%username%_Ping_Analysis.txt
+	echo    ^= ë„¤íŠ¸ì›Œí¬ í™˜ê²½ì´ ë¶ˆì•ˆì •í•©ë‹ˆë‹¤. >> c:\IP_Data\%username%_Ping_Analysis.txt
 ) else (
-	echo    ^= ³×Æ®¿öÅ© È¯°æÀÌ Á¤»óÀûÀÔ´Ï´Ù. >> c:\IP_Data\%username%_Ping_Analysis.txt
+	echo    ^= ë„¤íŠ¸ì›Œí¬ í™˜ê²½ì´ ì •ìƒì ìž…ë‹ˆë‹¤. >> c:\IP_Data\%username%_Ping_Analysis.txt
 )
 echo. >> c:\IP_Data\%username%_Ping_Analysis.txt
 goto Result
@@ -312,22 +323,22 @@ if /i "%ComAvg:~0,1%" equ "-" (
 )
 echo   ================================== >> c:\IP_Data\%username%_Ping_Analysis.txt
 echo    [* Report Analysis Results *] >> c:\IP_Data\%username%_Ping_Analysis.txt
-echo    ^= ÇÎÀÌ Æò±Õ [%SetAvg% ms] ¸¸Å­ Áö¿¬µÇ°í ÀÖ½À´Ï´Ù. >> c:\IP_Data\%username%_Ping_Analysis.txt
-echo    ^= ³×Æ®¿öÅ© È¯°æ ¿À·ù º¸°í [ %AllError% ] °Ç >> c:\IP_Data\%username%_Ping_Analysis.txt
+echo    ^= í•‘ì´ í‰ê·  [%SetAvg% ms] ë§Œí¼ ì§€ì—°ë˜ê³  ìžˆìŠµë‹ˆë‹¤. >> c:\IP_Data\%username%_Ping_Analysis.txt
+echo    ^= ë„¤íŠ¸ì›Œí¬ í™˜ê²½ ì˜¤ë¥˜ ë³´ê³  [ %AllError% ] ê±´ >> c:\IP_Data\%username%_Ping_Analysis.txt
 if "%allerror%" geq "1" (
-	echo    + ³×Æ®¿öÅ© È¯°æ Á¡°ËÀ» ±ÇÀåµå¸³´Ï´Ù. >> c:\IP_Data\%username%_Ping_Analysis.txt
+	echo    + ë„¤íŠ¸ì›Œí¬ í™˜ê²½ ì ê²€ì„ ê¶Œìž¥ë“œë¦½ë‹ˆë‹¤. >> c:\IP_Data\%username%_Ping_Analysis.txt
 )
 echo   ================================== >> c:\IP_Data\%username%_Ping_Analysis.txt
-echo    [ ÇÎ Áö¿¬ ¼Óµµ ] >> c:\IP_Data\%username%_Ping_Analysis.txt
-echo    - 1 ~ 50 ms	[Á¤»ó] >> c:\IP_Data\%username%_Ping_Analysis.txt
-echo    - 50 ~ 100 ms	[ÁÖÀÇ] >> c:\IP_Data\%username%_Ping_Analysis.txt
-echo    - 100ms ÀÌ»ó	[°æ°í] >> c:\IP_Data\%username%_Ping_Analysis.txt
+echo    [ í•‘ ì§€ì—° ì†ë„ ] >> c:\IP_Data\%username%_Ping_Analysis.txt
+echo    - 1 ~ 50 ms	[ì •ìƒ] >> c:\IP_Data\%username%_Ping_Analysis.txt
+echo    - 50 ~ 100 ms	[ì£¼ì˜] >> c:\IP_Data\%username%_Ping_Analysis.txt
+echo    - 100ms ì´ìƒ	[ê²½ê³ ] >> c:\IP_Data\%username%_Ping_Analysis.txt
 goto Exit
 
 :Exit
 echo %title% Complete all processes
 rmdir /s /q "c:\IP_Data\resource"
-echo %title% ÀÚ¼¼ÇÑ »ó´ã Èñ¸Á ½Ã °ü¸®ÀÚ¿¡°Ô "c:\IP_Data" Æú´õÀÇ %username%_Ping_Analysis.txt ÆÄÀÏÀ» Àü¼ÛÇØÁÖ½Ê½Ã¿À.
+echo %title% ìžì„¸í•œ ìƒë‹´ í¬ë§ ì‹œ ê´€ë¦¬ìžì—ê²Œ "c:\IP_Data" í´ë”ì˜ %username%_Ping_Analysis.txt íŒŒì¼ì„ ì „ì†¡í•´ì£¼ì‹­ì‹œì˜¤.
 echo %AddLoad% > c:\IP_Data\No.txt
 pause>nul
 exit

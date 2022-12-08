@@ -1,10 +1,10 @@
-REM FCFS ¾Ë°í¸®Áò
-REM ÇÁ·Î¼¼½ºµéÀÇ ¼öÇà ½Ã°£À» °áÁ¤ÇÏ´Â Execution º¯¼ö¸¦ ÀÔ·Â ¹Ş´Â Settings ·¹ÀÌºí
+REM FCFS ì•Œê³ ë¦¬ì¦˜
+
 set prth=%cd%\Modules\Process
 
 :Settings
 mode con cols=73 lines=18
-echo %title% °¢ ÇÁ·Î¼¼½ºÀÇ ÀÛ¾÷ ½Ã°£À» ÀÔ·ÂÇØÁÖ¼¼¿ä. [ex^) P1 P2 P3 P4]
+echo %title% ê° í”„ë¡œì„¸ìŠ¤ì˜ ì‘ì—… ì‹œê°„ì„ ì…ë ¥í•´ì£¼ì„¸ìš”. [ex^) P1 P2 P3 P4]
 echo %title% ex^) 3 4 7 1
 set /p Execution=^>^> 
 for /f "tokens=1-4 delims= " %%a in ("%Execution%") do (
@@ -15,7 +15,7 @@ for /f "tokens=1-4 delims= " %%a in ("%Execution%") do (
 )
 for /l %%a in (1,1,4) do (
 	if /i "TS_P%%a" equ "" (
-		echo %title% P%%a Execution °¡ °ø¹éÀÔ´Ï´Ù.
+		echo %title% P%%a Execution ê°€ ê³µë°±ì…ë‹ˆë‹¤.
 		goto Settings
 	)
 )
@@ -23,7 +23,7 @@ goto Settings2
 
 :Settings2
 mode con cols=73 lines=20
-echo %title% P1 ÇÁ·Î¼¼½º¸¦ Á¦¿ÜÇÑ P2, P3, P4 ÀÇ µµÂø ½Ã°£À» ÀÔ·ÂÇØÁÖ¼¼¿ä. [ex^) P2 P3 P4]
+echo %title% P1 í”„ë¡œì„¸ìŠ¤ë¥¼ ì œì™¸í•œ P2, P3, P4 ì˜ ë„ì°© ì‹œê°„ì„ ì…ë ¥í•´ì£¼ì„¸ìš”. [ex^) P2 P3 P4]
 echo %title% ex^) 2 5 9
 set /p arr_input=^>^> 
 for /f "tokens=1-3 delims= " %%a in ("%arr_input%") do (
@@ -34,16 +34,16 @@ for /f "tokens=1-3 delims= " %%a in ("%arr_input%") do (
 )
 for /l %%a in (2,1,4) do (
 	if /i "arr_time[%%a]" equ "" (
-		echo %title% P%%a µµÂø ½Ã°£ÀÌ °ø¹éÀÔ´Ï´Ù.
+		echo %title% P%%a ë„ì°© ì‹œê°„ì´ ê³µë°±ì…ë‹ˆë‹¤.
 		goto Settings2
 	)
 )
 goto Execute
 
-REM ¼øÂ÷ÀûÀ¸·Î ÇÁ·Î¼¼½º¸¦ ½ÇÇà½ÃÅ°´Â ·¹ÀÌºí
+REM ìˆœì°¨ì ìœ¼ë¡œ í”„ë¡œì„¸ìŠ¤ë¥¼ ì‹¤í–‰ì‹œí‚¤ëŠ” ë ˆì´ë¸”
 :Execute
 rem end_time[i] == 0[Total], 1[P1], 2[P2], 3[P3], 4[P4]
-rem start_time º¯¼ö¿¡ ÇöÀç ÃÊ »ğÀÔ
+rem start_time ë³€ìˆ˜ì— í˜„ì¬ ì´ˆ ì‚½ì…
 call "%cd%\Modules\time.lnk"
 cls
 set start_time[0]=%time:~6,2%
@@ -55,5 +55,5 @@ set end_time[0]=%time:~6,2%
 call "%cd%\Modules\rtime.lnk"
 goto BACK
 
-REM Execute ÀÛ¾÷ ¼öÇà ÈÄ os.cmd ·Î µ¹¾Æ°¡´Â ·¹ÀÌºí
+REM Execute ì‘ì—… ìˆ˜í–‰ í›„ os.cmd ë¡œ ëŒì•„ê°€ëŠ” ë ˆì´ë¸”
 :BACK

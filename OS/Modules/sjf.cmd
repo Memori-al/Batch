@@ -1,5 +1,10 @@
+<<<<<<< HEAD
 REM SJF ¾Ë°í¸®Áò
 REM ÇÁ·Î¼¼½ºµéÀÇ ¼öÇà ½Ã°£À» °áÁ¤ÇÏ´Â Execution º¯¼ö¸¦ ÀÔ·Â ¹Þ´Â Settings ·¹ÀÌºí
+=======
+REM SJF ì•Œê³ ë¦¬ì¦˜
+
+>>>>>>> c527de88344b901cf058bc48d88d62b6d85a38ea
 set prth=%cd%\Modules\Process
 if exist "%cd%\sortdata.txt" (
 	del /q "%cd%\sortdata.txt" 
