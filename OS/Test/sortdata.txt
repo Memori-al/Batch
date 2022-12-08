@@ -1,0 +1,9 @@
+
+Process Execution_Time
+------- --------------
+P3                   2
+P4                   5
+P2                   8
+P1                  15
+
+

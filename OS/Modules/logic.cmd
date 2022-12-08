@@ -1,4 +1,3 @@
-REM OS í”„ë¡œê·¸ë¨ì˜ í•µì‹¬ ëª¨ë“ˆ
 echo %title% Starting Logical Operations
 
 :SetString
@@ -22,8 +21,8 @@ pause>nul
 exit
 
 REM start_time[i], end_time[i]
-REM wait_time[i] = ëŒ€ê¸°ì‹œê°„
-REM end_time[i] = ì¢…ë£Œì‹œê°„
+REM wait_time[i] = ´ë±â½Ã°£
+REM end_time[i] = Á¾·á½Ã°£
 
 
 :FCFS_Logic
@@ -105,6 +104,9 @@ if !awt! lss 4 (
 )
 goto Paint
 
+:RR_Logic
+
+goto Paint
 
 :Paint
 call %cd%\Modules\paint.cmd
@@ -120,4 +122,4 @@ if !awt! leq 0 (
 goto BACK
 
 :BACK
-REM OS.cmd ë¡œ ëŒì•„ê°€ê¸°
+REM OS.cmd ·Î µ¹¾Æ°¡±â
